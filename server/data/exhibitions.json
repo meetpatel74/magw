@@ -1,0 +1,43 @@
+{
+    "exhibitions": [
+      {
+        "id": "1",
+        "title": "Modern Perspectives",
+        "shortDescription": "A collection of contemporary art exploring modern themes and techniques.",
+        "fullDescription": "This exhibition brings together works from emerging and established artists who are pushing the boundaries of contemporary art. Through a variety of media including painting, sculpture, and digital installations, these artists explore themes of identity, technology, and the human condition in the modern world.",
+        "dateRange": "April 10 - June 15, 2025",
+        "startDate": "2025-04-10",
+        "endDate": "2025-06-15",
+        "image": "/placeholder-exhibition-1.jpg",
+        "isCurrent": true,
+        "isUpcoming": false,
+        "type": "contemporary"
+      },
+      {
+        "id": "2",
+        "title": "Classical Reimagined",
+        "shortDescription": "A fresh look at classical art through a modern lens.",
+        "fullDescription": "Classical Reimagined offers visitors a chance to experience traditional artistic styles and subjects through contemporary interpretations. This exhibition showcases how artists today are influenced by and reinterpreting classical techniques and themes for modern audiences.",
+        "dateRange": "March 5 - May 20, 2025",
+        "startDate": "2025-03-05",
+        "endDate": "2025-05-20",
+        "image": "/placeholder-exhibition-2.jpg",
+        "isCurrent": true,
+        "isUpcoming": false,
+        "type": "classical"
+      },
+      {
+        "id": "3",
+        "title": "Digital Frontiers",
+        "shortDescription": "Exploring the intersection of art and technology.",
+        "fullDescription": "Digital Frontiers showcases innovative works that push the boundaries of what art can be in the digital age. From AI-generated pieces to interactive installations, this exhibition highlights how technology is transforming artistic expression and challenging our perceptions of creativity.",
+        "dateRange": "July 12 - September 30, 2025",
+        "startDate": "2025-07-12",
+        "endDate": "2025-09-30",
+        "image": "/placeholder-exhibition-3.jpg",
+        "isCurrent": false,
+        "isUpcoming": true,
+        "type": "digital"
+      }
+    ]
+  }

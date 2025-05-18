@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@magw.org",
+      "password": "password123",
+      "name": "Admin User",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "email": "curator@magw.org",
+      "password": "password123",
+      "name": "Curator Staff",
+      "role": "staff"
+    },
+    {
+      "id": "3",
+      "email": "visitor@example.com",
+      "password": "password123",
+      "name": "John Visitor",
+      "role": "visitor"
+    }
+  ]
+}

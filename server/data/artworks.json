@@ -1,0 +1,54 @@
+{
+    "artworks": [
+      {
+        "id": "1",
+        "title": "Urban Reflection",
+        "artist": "Elena Korzhova",
+        "year": "2023",
+        "medium": "Oil on canvas",
+        "description": "A vibrant cityscape capturing the dynamic energy and reflective surfaces of modern urban architecture. The piece plays with light and shadow to create a sense of movement and life within the bustling city scene.",
+        "image": "/placeholder-artwork-1.jpg",
+        "exhibitionId": "1"
+      },
+      {
+        "id": "2",
+        "title": "Digital Dreams",
+        "artist": "Marcus Chen",
+        "year": "2024",
+        "medium": "Digital art, printed on aluminum",
+        "description": "A surrealist digital composition exploring the relationship between human consciousness and artificial intelligence. The dreamlike quality suggests the blurred boundaries between reality and digital existence.",
+        "image": "/placeholder-artwork-2.jpg",
+        "exhibitionId": "3"
+      },
+      {
+        "id": "3",
+        "title": "Renaissance Echo",
+        "artist": "Isabella Romano",
+        "year": "2022",
+        "medium": "Oil and gold leaf on wood panel",
+        "description": "A contemporary reimagining of Renaissance portraiture techniques, combining traditional methods with modern subjects and themes. The use of gold leaf creates a luminous quality reminiscent of historical religious art.",
+        "image": "/placeholder-artwork-3.jpg",
+        "exhibitionId": "2"
+      },
+      {
+        "id": "4",
+        "title": "Fragmented Memory",
+        "artist": "James Wilson",
+        "year": "2024",
+        "medium": "Mixed media sculpture",
+        "description": "An assemblage of found objects, cast metal, and handcrafted elements that explores themes of memory, history, and personal identity. The fragmented nature of the piece invites viewers to construct their own narrative.",
+        "image": "/placeholder-artwork-4.jpg",
+        "exhibitionId": "1"
+      },
+      {
+        "id": "5",
+        "title": "Algorithmic Landscape",
+        "artist": "Sophia Nguyen",
+        "year": "2023",
+        "medium": "Generative art, digital print",
+        "description": "Created through a custom algorithm designed by the artist, this piece represents the intersection of natural landscapes and computational processes. Each element was generated through code that mimics natural growth patterns.",
+        "image": "/placeholder-artwork-5.jpg",
+        "exhibitionId": "3"
+      }
+    ]
+  }
