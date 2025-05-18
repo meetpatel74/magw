@@ -12,13 +12,15 @@ This project implements a modern, responsive web application for the Municipal A
 - **Collection Management**: Search and explore the gallery's permanent collection
 - **Administrative Dashboard**: Tools for curators, educators, and staff to manage exhibitions, programs, and content
 - **Program Registration**: Online registration and management for educational programs and events
+- **User Authentication**: Secure login and registration with role-based access control
 
 ## Tech Stack
 
 - **Frontend**: React.js with Next.js framework
 - **Styling**: Tailwind CSS
-- **Backend**: Node.js (planned for future implementation)
-- **Database**: PostgreSQL (planned for future implementation)
+- **Backend**: Node.js with Express
+- **Database**: File-based JSON storage (for development, to be replaced with PostgreSQL in production)
+- **Authentication**: JWT-based authentication with bcrypt password hashing
 
 ## Project Structure
 
@@ -27,16 +29,25 @@ magw/
 ├── public/              # Static assets
 ├── src/
 │   ├── app/             # Next.js app routes
+│   │   ├── exhibitions/ # Exhibition-related pages
+│   │   ├── login/       # Authentication pages
+│   │   └── ...          # Other pages
 │   ├── components/      # Reusable UI components
 │   │   ├── common/      # Generic components (buttons, forms, etc.)
 │   │   └── layout/      # Layout components (navbar, footer, etc.)
-│   └── data/            # Mock data (to be replaced with API)
+│   ├── data/            # Mock data (to be replaced with API)
+│   └── services/        # Frontend service layers
+│       └── api.js       # API integration service
+├── server/              # Backend API server
+│   ├── data/            # JSON data files
+│   ├── middleware/      # Express middleware
+│   ├── models/          # Data models
+│   ├── routes/          # API routes
+│   ├── validation/      # Request validation
+│   └── server.js        # Entry point
 ├── .gitignore           # Git ignore file
-├── jsconfig.json        # JavaScript configuration
-├── next.config.mjs      # Next.js configuration
 ├── package.json         # Project dependencies
-├── postcss.config.mjs   # PostCSS configuration
-└── tailwind.config.js   # Tailwind CSS configuration
+└── README.md            # Project documentation
 ```
 
 ## Getting Started
@@ -54,71 +65,104 @@ magw/
    cd magw
    ```
 
-2. Install dependencies:
+2. Install frontend dependencies:
    ```
    npm install
    # or
    yarn
    ```
 
-3. Run the development server:
+3. Install backend dependencies:
+   ```
+   cd server
+   npm install
+   # or
+   yarn
+   ```
+
+4. Create a `.env` file in the server directory:
+   ```
+   PORT=3001
+   JWT_SECRET=your_secret_key
+   NODE_ENV=development
+   ```
+
+### Running the Application
+
+1. Start the backend server:
+   ```
+   cd server
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+2. In a separate terminal, start the frontend development server:
    ```
    npm run dev
    # or
    yarn dev
    ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+   The API server will be running at [http://localhost:3001](http://localhost:3001).
 
-## User Flows
+### Default Users
 
-The application currently implements several key user flows:
+The system comes with three default users for testing:
 
-### 1. Exhibition Discovery and Ticketing (Visitor)
-- Browse current and upcoming exhibitions
-- View detailed exhibition information
-- Select date and time for visit
-- Purchase tickets online
-- Receive digital tickets
+1. Admin:
+   - Email: admin@magw.org
+   - Password: password123
 
-### 2. Exhibition Planning (Curator)
-- Create and manage exhibitions
-- Select artworks from the collection
-- Organize exhibition layout
-- Collaborate with team members
+2. Staff:
+   - Email: curator@magw.org
+   - Password: password123
 
-### 3. Program Management (Education Coordinator)
-- Create educational programs
-- Manage registrations
-- Track attendance
-- Collect feedback
+3. Visitor:
+   - Email: visitor@example.com
+   - Password: password123
 
-## Component Architecture
+## API Documentation
 
-The application follows a modular component architecture:
+The API uses a RESTful design with the following main endpoints:
 
-- **Layout Components**: Provide structure for different sections
-- **Common Components**: Reusable UI elements like buttons, forms, cards
-- **Page Components**: Content specific to each route
-- **Navigation Components**: Navbar and footer for user navigation
+- **Authentication**:
+  - POST /api/v1/auth/register - Register a new user
+  - POST /api/v1/auth/login - Login and get JWT token
 
-## Development Roadmap
+- **Exhibitions**:
+  - GET /api/v1/exhibitions - Get all exhibitions
+  - GET /api/v1/exhibitions/:id - Get exhibition by ID
+  - POST /api/v1/exhibitions - Create a new exhibition (protected)
+  - PUT /api/v1/exhibitions/:id - Update an exhibition (protected)
+  - DELETE /api/v1/exhibitions/:id - Delete an exhibition (protected)
 
-### Phase 1: Foundation (Current)
-- Core UI components
-- Exhibition browsing functionality
-- User interface prototypes
+- **Artworks**:
+  - GET /api/v1/artworks - Get all artworks
+  - GET /api/v1/artworks/:id - Get artwork by ID
+  - POST /api/v1/artworks - Create a new artwork (protected)
+  - PUT /api/v1/artworks/:id - Update an artwork (protected)
+  - DELETE /api/v1/artworks/:id - Delete an artwork (protected)
 
-### Phase 2: Public Engagement (Next)
-- Online ticketing system
-- Membership management
-- Program registration
+For full API documentation, see the OpenAPI specification in the `api-contract.yaml` file.
 
-### Phase 3: Advanced Operations (Future)
-- Exhibition planning tools
-- Donor management
-- Financial integration
+## Testing
 
+You can test the API endpoints using the included Postman collection:
+
+1. Import the `MAGW_API.postman_collection.json` file into Postman
+2. Set up an environment with a `token` variable to store the JWT token after login
+3. Run the collection tests to verify API functionality
+
+## Future Enhancements
+
+- Implement a PostgreSQL database for persistent storage
+- Add image upload functionality for exhibitions and artworks
+- Implement a ticket purchasing system
+- Add event management features
+- Enhance the admin dashboard with analytics and reporting
+- Implement user profiles and favorites
 
 ## Contributing
 
