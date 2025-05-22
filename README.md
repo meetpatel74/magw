@@ -60,12 +60,14 @@ magw/
 ### Installation
 
 1. Clone the repository:
+
    ```
    git clone https://github.com/your-username/magw.git
    cd magw
    ```
 
 2. Install frontend dependencies:
+
    ```
    npm install
    # or
@@ -73,6 +75,7 @@ magw/
    ```
 
 3. Install backend dependencies:
+
    ```
    cd server
    npm install
@@ -90,6 +93,7 @@ magw/
 ### Running the Application
 
 1. Start the backend server:
+
    ```
    cd server
    npm run dev
@@ -98,6 +102,7 @@ magw/
    ```
 
 2. In a separate terminal, start the frontend development server:
+
    ```
    npm run dev
    # or
@@ -112,10 +117,12 @@ magw/
 The system comes with three default users for testing:
 
 1. Admin:
+
    - Email: admin@magw.org
    - Password: password123
 
 2. Staff:
+
    - Email: curator@magw.org
    - Password: password123
 
@@ -128,10 +135,12 @@ The system comes with three default users for testing:
 The API uses a RESTful design with the following main endpoints:
 
 - **Authentication**:
+
   - POST /api/v1/auth/register - Register a new user
   - POST /api/v1/auth/login - Login and get JWT token
 
 - **Exhibitions**:
+
   - GET /api/v1/exhibitions - Get all exhibitions
   - GET /api/v1/exhibitions/:id - Get exhibition by ID
   - POST /api/v1/exhibitions - Create a new exhibition (protected)
@@ -179,3 +188,23 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Acknowledgments
 
 - UI/UX design inspired by best practices in museum digital experiences
+
+## Dashboard Implementation
+
+### Metrics Chosen
+
+- **Monthly Records:** Shows the number of records per month (mock data).
+- **User Distribution:** Shows the distribution of users by type (mock data).
+
+### Chart Library
+
+- **Chart.js** with **react-chartjs-2** wrapper for rendering bar and pie charts.
+
+### Export Approach
+
+- **CSV Export:** Clicking the 'Download CSV' button on the dashboard exports both chart datasets as a CSV file.
+
+### Notes
+
+- All data is currently mock data for demonstration.
+- The dashboard is accessible from the main navigation.
