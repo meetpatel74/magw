@@ -1,210 +1,191 @@
 # Municipal Art Gallery of Westfield (MAGW)
 
-A comprehensive web-based information system for the Municipal Art Gallery of Westfield, designed to improve visitor experience, streamline administrative processes, and enhance the gallery's digital presence.
+A modern web-based information system for the Municipal Art Gallery of Westfield, designed to enhance visitor experience, streamline administration, and strengthen the gallery's digital presence.
+
+---
+
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Monorepo Structure](#monorepo-structure)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Default Users](#default-users)
+- [API Documentation](#api-documentation)
+- [Testing](#testing)
+- [Dashboard Features](#dashboard-features)
+- [Future Enhancements](#future-enhancements)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
+
+---
 
 ## Project Overview
 
-This project implements a modern, responsive web application for the Municipal Art Gallery of Westfield, addressing key information management needs across all stakeholders. The system integrates exhibition management, ticketing, collection browsing, and administrative tools in a cohesive platform.
+This system integrates exhibition management, ticketing, collection browsing, and administrative tools into a cohesive platform for all stakeholders.
 
 ### Core Features
 
-- **Exhibition Discovery and Ticketing**: Browse current and upcoming exhibitions, view details, and purchase tickets online
-- **Collection Management**: Search and explore the gallery's permanent collection
-- **Administrative Dashboard**: Tools for curators, educators, and staff to manage exhibitions, programs, and content
-- **Program Registration**: Online registration and management for educational programs and events
-- **User Authentication**: Secure login and registration with role-based access control
+- **Exhibition Discovery & Ticketing:** Browse exhibitions and purchase tickets online.
+- **Collection Management:** Search and explore the gallery's permanent collection.
+- **Admin Dashboard:** Manage exhibitions, programs, and content.
+- **Program Registration:** Register for educational programs and events.
+- **User Authentication:** Secure login with role-based access.
 
-## Tech Stack
+---
 
-- **Frontend**: React.js with Next.js framework
-- **Styling**: Tailwind CSS
-- **Backend**: Node.js with Express
-- **Database**: File-based JSON storage (for development, to be replaced with PostgreSQL in production)
-- **Authentication**: JWT-based authentication with bcrypt password hashing
+## Monorepo Structure
 
-## Project Structure
+This repository uses npm workspaces to manage both the Next.js frontend and Express backend.
 
 ```
 magw/
-├── public/              # Static assets
-├── src/
-│   ├── app/             # Next.js app routes
-│   │   ├── exhibitions/ # Exhibition-related pages
-│   │   ├── login/       # Authentication pages
-│   │   └── ...          # Other pages
-│   ├── components/      # Reusable UI components
-│   │   ├── common/      # Generic components (buttons, forms, etc.)
-│   │   └── layout/      # Layout components (navbar, footer, etc.)
-│   ├── data/            # Mock data (to be replaced with API)
-│   └── services/        # Frontend service layers
-│       └── api.js       # API integration service
-├── server/              # Backend API server
-│   ├── data/            # JSON data files
-│   ├── middleware/      # Express middleware
-│   ├── models/          # Data models
-│   ├── routes/          # API routes
-│   ├── validation/      # Request validation
-│   └── server.js        # Entry point
-├── .gitignore           # Git ignore file
-├── package.json         # Project dependencies
-└── README.md            # Project documentation
+├── apps/
+│   ├── web/        # Next.js frontend
+│   └── api/        # Express backend
+├── packages/
+│   └── shared/     # Shared code (utilities, types, etc.)
+├── node_modules/
+├── package.json    # Root config (workspaces)
+└── ... (config files)
 ```
+
+---
+
+## Tech Stack
+
+- **Frontend:** React.js (Next.js)
+- **Styling:** Tailwind CSS
+- **Backend:** Node.js (Express)
+- **Database:** JSON (dev), PostgreSQL (planned)
+- **Authentication:** JWT, bcrypt
+
+---
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (v18.18.0 or newer)
-- npm or yarn
+- Node.js (v18.18.0+)
+- npm
 
 ### Installation
 
-1. Clone the repository:
+1. **Clone the repository:**
 
-   ```
+   ```sh
    git clone https://github.com/your-username/magw.git
    cd magw
    ```
 
-2. Install frontend dependencies:
+2. **Install all dependencies:**
 
-   ```
+   ```sh
    npm install
-   # or
-   yarn
    ```
 
-3. Install backend dependencies:
-
-   ```
-   cd server
-   npm install
-   # or
-   yarn
-   ```
-
-4. Create a `.env` file in the server directory:
-   ```
-   PORT=3001
-   JWT_SECRET=your_secret_key
-   NODE_ENV=development
-   ```
+3. **Set up environment variables for the backend:**
+   - Create a `.env` file in `apps/api/server/`:
+     ```
+     PORT=3001
+     JWT_SECRET=your_secret_key
+     NODE_ENV=development
+     ```
 
 ### Running the Application
 
-1. Start the backend server:
+- **Start both frontend and backend:**
 
-   ```
-   cd server
-   npm run dev
-   # or
-   yarn dev
-   ```
+  ```sh
+  npm run dev
+  ```
 
-2. In a separate terminal, start the frontend development server:
+  - Frontend: [http://localhost:3000](http://localhost:3000)
+  - API: [http://localhost:3001](http://localhost:3001)
 
-   ```
-   npm run dev
-   # or
-   yarn dev
-   ```
+- **Run only frontend:**
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
-   The API server will be running at [http://localhost:3001](http://localhost:3001).
+  ```sh
+  npm run dev:web
+  ```
 
-### Default Users
+- **Run only backend:**
+  ```sh
+  npm run dev:api
+  ```
 
-The system comes with three default users for testing:
+---
 
-1. Admin:
+## Default Users
 
-   - Email: admin@magw.org
-   - Password: password123
+For testing, the system includes:
 
-2. Staff:
+- **Admin:** admin@magw.org / password123
+- **Staff:** curator@magw.org / password123
+- **Visitor:** visitor@example.com / password123
 
-   - Email: curator@magw.org
-   - Password: password123
-
-3. Visitor:
-   - Email: visitor@example.com
-   - Password: password123
+---
 
 ## API Documentation
 
-The API uses a RESTful design with the following main endpoints:
+The API follows RESTful conventions. Main endpoints include:
 
-- **Authentication**:
+- **Authentication:** `/api/v1/auth/register`, `/api/v1/auth/login`
+- **Exhibitions:** `/api/v1/exhibitions`, `/api/v1/exhibitions/:id`
+- **Artworks:** `/api/v1/artworks`, `/api/v1/artworks/:id`
 
-  - POST /api/v1/auth/register - Register a new user
-  - POST /api/v1/auth/login - Login and get JWT token
+See the OpenAPI spec (`api-contract.yaml`) for full details.
 
-- **Exhibitions**:
-
-  - GET /api/v1/exhibitions - Get all exhibitions
-  - GET /api/v1/exhibitions/:id - Get exhibition by ID
-  - POST /api/v1/exhibitions - Create a new exhibition (protected)
-  - PUT /api/v1/exhibitions/:id - Update an exhibition (protected)
-  - DELETE /api/v1/exhibitions/:id - Delete an exhibition (protected)
-
-- **Artworks**:
-  - GET /api/v1/artworks - Get all artworks
-  - GET /api/v1/artworks/:id - Get artwork by ID
-  - POST /api/v1/artworks - Create a new artwork (protected)
-  - PUT /api/v1/artworks/:id - Update an artwork (protected)
-  - DELETE /api/v1/artworks/:id - Delete an artwork (protected)
-
-For full API documentation, see the OpenAPI specification in the `api-contract.yaml` file.
+---
 
 ## Testing
 
-You can test the API endpoints using the included Postman collection:
+- Import `MAGW_API.postman_collection.json` into Postman.
+- Set up a `token` environment variable for JWT.
+- Run the collection to verify API functionality.
 
-1. Import the `MAGW_API.postman_collection.json` file into Postman
-2. Set up an environment with a `token` variable to store the JWT token after login
-3. Run the collection tests to verify API functionality
+---
+
+## Dashboard Features
+
+- **Metrics:** Monthly records, user distribution (mock data).
+- **Charts:** Bar and pie charts via Chart.js (`react-chartjs-2`).
+- **CSV Export:** Download chart data as CSV.
+- **Note:** All dashboard data is currently mock/demo data.
+
+---
 
 ## Future Enhancements
 
-- Implement a PostgreSQL database for persistent storage
-- Add image upload functionality for exhibitions and artworks
-- Implement a ticket purchasing system
-- Add event management features
-- Enhance the admin dashboard with analytics and reporting
-- Implement user profiles and favorites
+- PostgreSQL integration
+- Image uploads for exhibitions/artworks
+- Ticket purchasing system
+- Event management
+- Enhanced admin analytics
+- User profiles and favorites
+
+---
 
 ## Contributing
 
-1. Fork the repository
-2. Create your feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add some amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
+1. Fork the repo
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit and push your changes
+4. Open a Pull Request
+
+---
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+MIT License. See [LICENSE](LICENSE) for details.
+
+---
 
 ## Acknowledgments
 
-- UI/UX design inspired by best practices in museum digital experiences
+- UI/UX inspired by best practices in museum digital experiences.
 
-## Dashboard Implementation
+---
 
-### Metrics Chosen
-
-- **Monthly Records:** Shows the number of records per month (mock data).
-- **User Distribution:** Shows the distribution of users by type (mock data).
-
-### Chart Library
-
-- **Chart.js** with **react-chartjs-2** wrapper for rendering bar and pie charts.
-
-### Export Approach
-
-- **CSV Export:** Clicking the 'Download CSV' button on the dashboard exports both chart datasets as a CSV file.
-
-### Notes
-
-- All data is currently mock data for demonstration.
-- The dashboard is accessible from the main navigation.
+If you need help with monorepo tooling or want to add more shared packages, just ask!
