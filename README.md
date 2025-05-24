@@ -2,8 +2,6 @@
 
 A modern web-based information system for the Municipal Art Gallery of Westfield, designed to enhance visitor experience, streamline administration, and strengthen the gallery's digital presence.
 
----
-
 ## Table of Contents
 
 - [Project Overview](#project-overview)
@@ -19,8 +17,7 @@ A modern web-based information system for the Municipal Art Gallery of Westfield
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 
----
-
+=
 ## Project Overview
 
 This system integrates exhibition management, ticketing, collection browsing, and administrative tools into a cohesive platform for all stakeholders.
@@ -32,8 +29,6 @@ This system integrates exhibition management, ticketing, collection browsing, an
 - **Admin Dashboard:** Manage exhibitions, programs, and content.
 - **Program Registration:** Register for educational programs and events.
 - **User Authentication:** Secure login with role-based access.
-
----
 
 ## Monorepo Structure
 
@@ -51,8 +46,6 @@ magw/
 └── ... (config files)
 ```
 
----
-
 ## Tech Stack
 
 - **Frontend:** React.js (Next.js)
@@ -60,8 +53,6 @@ magw/
 - **Backend:** Node.js (Express)
 - **Database:** JSON (dev), PostgreSQL (planned)
 - **Authentication:** JWT, bcrypt
-
----
 
 ## Getting Started
 
@@ -75,7 +66,7 @@ magw/
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/your-username/magw.git
+   git clone https://github.com/meetpatel74/magw.git
    cd magw
    ```
 
@@ -115,18 +106,6 @@ magw/
   npm run dev:api
   ```
 
----
-
-## Default Users
-
-For testing, the system includes:
-
-- **Admin:** admin@magw.org / password123
-- **Staff:** curator@magw.org / password123
-- **Visitor:** visitor@example.com / password123
-
----
-
 ## API Documentation
 
 The API follows RESTful conventions. Main endpoints include:
@@ -137,15 +116,11 @@ The API follows RESTful conventions. Main endpoints include:
 
 See the OpenAPI spec (`api-contract.yaml`) for full details.
 
----
-
 ## Testing
 
 - Import `MAGW_API.postman_collection.json` into Postman.
 - Set up a `token` environment variable for JWT.
 - Run the collection to verify API functionality.
-
----
 
 ## Dashboard Features
 
@@ -165,8 +140,6 @@ See the OpenAPI spec (`api-contract.yaml`) for full details.
 - Enhanced admin analytics
 - User profiles and favorites
 
----
-
 ## Contributing
 
 1. Fork the repo
@@ -174,18 +147,10 @@ See the OpenAPI spec (`api-contract.yaml`) for full details.
 3. Commit and push your changes
 4. Open a Pull Request
 
----
-
 ## License
 
 MIT License. See [LICENSE](LICENSE) for details.
 
----
-
 ## Acknowledgments
 
 - UI/UX inspired by best practices in museum digital experiences.
-
----
-
-If you need help with monorepo tooling or want to add more shared packages, just ask!
