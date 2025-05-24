@@ -17,7 +17,6 @@ A modern web-based information system for the Municipal Art Gallery of Westfield
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 
-=
 ## Project Overview
 
 This system integrates exhibition management, ticketing, collection browsing, and administrative tools into a cohesive platform for all stakeholders.
@@ -128,17 +127,6 @@ See the OpenAPI spec (`api-contract.yaml`) for full details.
 - **Charts:** Bar and pie charts via Chart.js (`react-chartjs-2`).
 - **CSV Export:** Download chart data as CSV.
 - **Note:** All dashboard data is currently mock/demo data.
-
----
-
-## Future Enhancements
-
-- PostgreSQL integration
-- Image uploads for exhibitions/artworks
-- Ticket purchasing system
-- Event management
-- Enhanced admin analytics
-- User profiles and favorites
 
 ## Contributing
 
