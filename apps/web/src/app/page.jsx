@@ -37,7 +37,7 @@ export default function Home() {
             </div>
             <div className="mt-8 lg:mt-0">
               <img
-                src="/placeholder-hero.jpg"
+                src="/gallary-exh.jpg"
                 alt="Gallery exhibition"
                 className="rounded-lg shadow-lg"
               />
