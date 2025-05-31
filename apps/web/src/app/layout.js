@@ -17,11 +17,21 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  // Simple role check for admin/staff (client-side only for now)
+  let isAdmin = false;
+  if (typeof window !== "undefined") {
+    const user = localStorage.getItem("user");
+    if (user) {
+      const parsed = JSON.parse(user);
+      isAdmin = parsed.role === "admin" || parsed.role === "staff";
+    }
+  }
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Optionally show admin nav here if isAdmin */}
         {children}
       </body>
     </html>
